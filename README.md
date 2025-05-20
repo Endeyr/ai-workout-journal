@@ -1,25 +1,25 @@
-# NextJs Template
+# AI Workout Journal
 
-This template is a modern [Next.js](https://nextjs.org) setup follwing best practices for web development. It utilizes popular libraries such as zod and react hook forms to improve the UX and UI. 
+Description
 
 ## Getting Started
 
 1. Create with template:
 
 ```nodejs
-npx create-next-app@latest <project-name> -e "https://github.com/Endeyr/nextjs-template"
+pnpm
 ```
 
 2. Install dependencies: 
 
 ```nodejs
-npm install
+pnpm install
 ```
 
 3. Run the development server:
 
 ```nodejs
-npm run dev
+pnpm run dev
 ```
 
 ## Scripts

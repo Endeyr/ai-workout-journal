@@ -3,7 +3,7 @@ interface Props {
 }
 const Layout = ({ children }: Props) => {
   return (
-    <div className='min-h-[100dvh]'>
+    <div className='min-h-dvh'>
       <main className='flex min-h-[90dvh] w-full flex-col items-center justify-center'>
         {children}
       </main>
