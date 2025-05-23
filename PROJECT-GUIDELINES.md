@@ -24,7 +24,7 @@ Build a workout journal web app where users can log workouts, view history, and 
 ### Goal: Implement core workout tracking features
 
 #### Tasks
-- [ ] Set up project with Next.js, TypeScript, and styling
+- [x] Set up project with Next.js, TypeScript, and styling
 - [ ] Design workout data model:
   - Workout: date, type, duration, notes
   - Exercises: name, sets, reps, weight
