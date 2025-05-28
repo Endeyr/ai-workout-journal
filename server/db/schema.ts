@@ -15,17 +15,17 @@ export const createTable = singlestoreTableCreator(
   (name) => `ai-workout-journal_${name}`
 );
 
-export const table = createTable(
+export const exercise_table = createTable(
   'table',
   {
     id: bigint('id', { mode: 'number', unsigned: true })
       .primaryKey()
       .autoincrement(),
-    ownerId: text('owner_id').notNull(),
-    name: text('name').notNull(),
-    size: int('size').notNull(),
-    url: text('url').notNull(),
-    // fileKey: text('file_key').notNull(),
+    ownerId: text('owner_id').notNull(), // User Id
+    name: text('name').notNull(), // Workout Name
+    sets: int().notNull(),
+    reps: int().notNull(),
+    notes: text('notes'),
     createdAt: timestamp('created_at').notNull().defaultNow(),
   },
   (t) => {
@@ -33,4 +33,4 @@ export const table = createTable(
   }
 );
 
-export type DB_TableType = typeof table.$inferSelect;
+export type DB_TableType = typeof exercise_table.$inferSelect;
