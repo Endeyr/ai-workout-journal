@@ -5,7 +5,7 @@ export default function SignOut() {
     <form
       action={async () => {
         'use server';
-        await signOut({ redirectTo: '/' });
+        await signOut();
       }}
     >
       <button type='submit'>Sign Out</button>
