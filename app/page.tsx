@@ -1,4 +1,5 @@
 import { auth } from '@/auth';
+import { ProfileForm } from '@/components/form';
 import SignIn from '@/components/sign-in';
 import SignOut from '@/components/sign-out';
 import UserAvatar from '@/components/user-avatar';
@@ -10,12 +11,20 @@ export default async function Page() {
 
   return (
     <div>
-      {!user ? <SignIn /> : <SignOut />}
+      <div>{!user ? <SignIn /> : <SignOut />}</div>
       <h1>Home</h1>
-      <Link href='/about'>About</Link>
-      <Link href='/chat'>Chat</Link>
-
-      <UserAvatar />
+      <div>
+        <Link href='/about'>About</Link>
+      </div>
+      <div>
+        <Link href='/chat'>Chat</Link>
+      </div>
+      <div>
+        <UserAvatar />
+      </div>
+      <div>
+        <ProfileForm />
+      </div>
     </div>
   );
 }
