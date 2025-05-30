@@ -4,6 +4,7 @@ if (process.env.NEXT_RUNTIME) {
 
 import {
   bigint,
+  boolean,
   index,
   int,
   singlestoreTableCreator,
@@ -15,17 +16,20 @@ export const createTable = singlestoreTableCreator(
   (name) => `ai-workout-journal_${name}`
 );
 
+// Intended Use: Users can create their own exercise and search the db of others exercises to add to their workout
+
 export const exercise_table = createTable(
-  'table',
+  'exercise-table',
   {
     id: bigint('id', { mode: 'number', unsigned: true })
       .primaryKey()
       .autoincrement(),
     ownerId: text('owner_id').notNull(), // User Id
-    name: text('name').notNull(), // Workout Name
+    name: text('name').notNull(),
     sets: int().notNull(),
     reps: int().notNull(),
-    notes: text('notes'),
+    weight: int().notNull(),
+    workoutId: int(), // if it belongs to a workout
     createdAt: timestamp('created_at').notNull().defaultNow(),
   },
   (t) => {
@@ -35,17 +39,21 @@ export const exercise_table = createTable(
 
 export type DB_ExerciseTableType = typeof exercise_table.$inferSelect;
 
+// Intended Use: Users can create a workout to follow, and add exercises to it
+
 export const workout_table = createTable(
-  'table',
+  'workout-table',
   {
     id: bigint('id', { mode: 'number', unsigned: true })
       .primaryKey()
       .autoincrement(),
     ownerId: text('owner_id').notNull(), // User Id
-    name: text('name').notNull(), // Workout Name
+    name: text('name').notNull(),
     type: text('type').notNull(), // Enum? Legs, Arms, Back, ect
-    duration: int().notNull(), // HHMM
+    duration: int().notNull(), // MMSS
     notes: text('notes'),
+    fitnessId: int(), // if it belongs to a fitness regimine
+    dayOfWeek: text('dayOfWeek'),
     createdAt: timestamp('created_at').notNull().defaultNow(),
   },
   (t) => {
@@ -54,3 +62,23 @@ export const workout_table = createTable(
 );
 
 export type DB_WorkoutTableType = typeof exercise_table.$inferSelect;
+
+// Intended Use: Tracks all the users workouts
+
+export const regimen_table = createTable(
+  'regimen-table',
+  {
+    id: bigint('id', { mode: 'number', unsigned: true })
+      .primaryKey()
+      .autoincrement(),
+    ownerId: text('owner_id').notNull(), // User Id
+    name: text('name').notNull(),
+    visibility: boolean().default(false),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+  },
+  (t) => {
+    return [index('owner_id_index').on(t.ownerId)];
+  }
+);
+
+export type DB_RegimenTableType = typeof exercise_table.$inferSelect;
