@@ -25,7 +25,7 @@ Build a workout journal web app where users can log workouts, view history, and 
 
 #### Tasks
 - [x] Set up project with Next.js, TypeScript, and styling
-- [ ] Design workout data model:
+- [x] Design workout data model:
   - Workout: date, type, duration, notes
   - Exercises: name, sets, reps, weight
 - [ ] Create database schema with Prisma or Supabase

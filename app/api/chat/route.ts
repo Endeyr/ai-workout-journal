@@ -1,16 +1,15 @@
 import { deepseek } from '@ai-sdk/deepseek';
-import { generateText } from 'ai';
+import { streamText } from 'ai';
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
-  const result = await generateText({
-    model: deepseek('deepseek-reasoner'),
+  const result = await streamText({
+    model: deepseek('deepseek-chat'),
     messages,
   });
 
-  console.log(result.providerMetadata);
-  // Example output: { deepseek: { promptCacheHitTokens: 1856, promptCacheMissTokens: 5 } }
-
-  return result.providerMetadata;
+  return result.toDataStreamResponse({
+    sendReasoning: true,
+  });
 }
