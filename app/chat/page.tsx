@@ -1,10 +1,10 @@
 'use client';
 
+import { auth } from '@/auth';
 import { Chat } from '@/components/ui/chat';
 import { useChat } from '@ai-sdk/react';
-
-// TODO Need to lock behind user being logged in
-export default function Page() {
+import { redirect } from 'next/navigation';
+export default async function Page() {
   const {
     messages,
     input,
@@ -14,6 +14,11 @@ export default function Page() {
     append,
     stop,
   } = useChat();
+
+  const session = await auth();
+  const user = session?.user;
+
+  if (!user) redirect('/');
 
   return (
     <div className='mx-auto flex min-h-screen flex-col items-center justify-center'>
