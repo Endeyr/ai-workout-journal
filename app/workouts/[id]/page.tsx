@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -8,32 +8,32 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   ArrowLeft,
-  Calendar,
-  Clock,
-  Target,
-  TrendingUp,
-  Dumbbell,
-  Play,
-  Edit,
-  Copy,
-  Share,
-  Heart,
-  Timer,
-  Zap,
-  CheckCircle2,
-  BarChart3,
   Award,
+  BarChart3,
+  Calendar,
+  CheckCircle2,
+  Clock,
+  Copy,
+  Dumbbell,
+  Edit,
+  Heart,
+  Play,
+  Share,
+  Target,
+  Timer,
+  TrendingUp,
+  Zap,
 } from 'lucide-react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { useState } from 'react';
 
-export default function WorkoutDetailPage() {
+export default function WorkoutsDetailPage() {
   const params = useParams();
   const workoutId = params.id;
 
