@@ -28,7 +28,7 @@ Build a workout journal web app where users can log workouts, view history, and 
 - [x] Design workout data model:
   - Workout: date, type, duration, notes
   - Exercises: name, sets, reps, weight
-- [ ] Create database schema with Prisma or Supabase
+- [x] Create database schema with Prisma or Supabase
 - [ ] Build workout pages:
   - [ ] Add Workout (form)
   - [ ] Edit Workout
